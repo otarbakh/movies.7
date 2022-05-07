@@ -1,5 +1,6 @@
 package com.example.movies7.FragmentS.movieS
 
+import TVshowListFragment
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -84,13 +85,13 @@ class movieListFragment:Fragment() {
             LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         binding.rvMovies.adapter = moviesAdapter
 
-//        binding.bntTVShows.setOnClickListener {
-//            parentFragmentManager.beginTransaction().apply {
-//                replace(R.id.flContent, TvShowsListFragment())
-//                addToBackStack(TvShowsListFragment::javaClass.name)
-//                commit()
-//            }
-//        }
+        binding.bntTVShows.setOnClickListener {
+            parentFragmentManager.beginTransaction().apply {
+                replace(R.id.flContent, TVshowListFragment())
+                addToBackStack(TVshowListFragment::javaClass.name)
+                commit()
+            }
+        }
     }
 
     override fun onDestroyView() {

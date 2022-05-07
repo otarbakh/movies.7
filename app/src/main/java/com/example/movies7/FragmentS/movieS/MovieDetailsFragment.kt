@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
+import com.example.movies7.FragmentS.movieS.MovieDetailsFragment.Companion.KEY_MOVIEL_POST
 import com.example.movies7.databinding.MoviedetailsBinding
 
 class MovieDetailsFragment:Fragment() {
@@ -29,12 +30,12 @@ class MovieDetailsFragment:Fragment() {
         val movieRatingfromCompanionObject = requireArguments().getString(KEY_MOVIE_RATING)
         val moviePopularityfromCompanionObject = requireArguments().getString(KEY_MOVIE_POP)
         val movieRatecountfromCompanionObject = requireArguments().getString(KEY_MOVIE_RATECOUNT)
-
-//        val movieUrl = requireArguments().getString(MoviedetailsBinding.KEY_MOVIEL_POST)
-//        val realMovieUrl = "https://image.tmdb.org/t/p/w500" + movieUrl
 //
-//        val movieLargeUrl = requireArguments().getString(MoviedetailsBinding.KEY_MOVIES_POST)
-//        val realMovieLargeUrl = "https://image.tmdb.org/t/p/w500" + movieLargeUrl
+        val movieUrl = requireArguments().getString(MovieDetailsFragment.KEY_MOVIEL_POST)
+        val realMovieUrl = "https://image.tmdb.org/t/p/w500" + movieUrl
+
+        val movieLargeUrl = requireArguments().getString(MovieDetailsFragment.KEY_MOVIES_POST)
+        val realMovieLargeUrl = "https://image.tmdb.org/t/p/w500" + movieLargeUrl
 
         binding.tvMovieName.text = movieNamefromCompanionObject
         binding.tvMovieDescription.text = "Overview: \n\n${movieDescfromCompanionObject}"
@@ -45,8 +46,8 @@ class MovieDetailsFragment:Fragment() {
 
 
 
-//        Glide.with(requireContext()).load(realMovieLargeUrl).into(binding.ivLargePoster)
-//        Glide.with(requireContext()).load(realMovieUrl).into(binding.ivSmallPoster)
+        Glide.with(requireContext()).load(realMovieLargeUrl).into(binding.ivLargePoster)
+        Glide.with(requireContext()).load(realMovieUrl).into(binding.ivSmallPoster)
 
     }
     override fun onDestroyView() {
