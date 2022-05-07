@@ -4,16 +4,21 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.movies7.databinding.MovieitemBinding
-import com.example.movies7.models.mModels.Result
+import com.example.movies7.Models.Mmodelsi.Resultati
 
-class MoviesAdapter(val movieList: MutableList<Result>) : RecyclerView.Adapter<MoviesViewHolder>() {
-
+class MoviesAdapter(val movieList: MutableList<Resultati>) : RecyclerView.Adapter<MoviesViewHolder>() {
+    private lateinit var itemClickListener: (Resultati, Int) -> Unit
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MoviesViewHolder {
         val binding =
             MovieitemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return MoviesViewHolder(binding)
     }
-    fun updateList(movies:List<Result>){
+
+    fun setOnItemCLickListener(clickListener: (Resultati, Int) -> Unit) {
+        itemClickListener = clickListener
+    }
+
+    fun updateList(movies:List<Resultati>){
         movieList.clear()
         movieList.addAll(movies)
         notifyDataSetChanged()
@@ -26,9 +31,9 @@ class MoviesAdapter(val movieList: MutableList<Result>) : RecyclerView.Adapter<M
         holder.binding.tvReleaseDate.text = "release date: \n${movie.release_date}"
         holder.binding.tvAverageRating.text = "total votes: \n${movie.vote_count.toString()}"
 
-//        holder.binding.tvMovieName.setOnClickListener {
-//            itemClickListener.invoke(movie,position)
-//        }
+        holder.binding.tvMovieName.setOnClickListener {
+            itemClickListener.invoke(movie,position)
+        }
     }
 
     override fun getItemCount(): Int {

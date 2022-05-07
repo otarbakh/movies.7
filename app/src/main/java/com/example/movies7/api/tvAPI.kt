@@ -1,7 +1,8 @@
 package com.example.movies7.api
 
 
-import com.example.movies7.models.tvModels.popularTv
+
+import com.example.movies7.Models.tvModels.PopularTv
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -10,5 +11,5 @@ interface tvAPI {
 
     suspend fun getPopularTv(
         @Query("api_key")
-        apiKey:String): popularTv
+        apiKey:String): PopularTv
 }

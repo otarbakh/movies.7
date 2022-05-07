@@ -1,6 +1,6 @@
-package com.example.movies7.Models.MovieModels
+package com.example.movies7.Models.Mmodelsi
 
-data class Result1(
+data class Resultati(
     val adult: Boolean,
     val backdrop_path: String,
     val genre_ids: List<Int>,
